@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Завдання 1</title>
+</head>
+<body>
+    <ul id="categories">
+        <li>Тварини
+            <ul>
+                <li>Кіт</li>
+                <li>Хом'як</li>
+                <li>Кінь</li>
+                <li>Папуга</li>
+            </ul>
+        </li>
+        <li>Продукти
+            <ul>
+                <li>Хліб</li>
+                <li>Петрушка</li>
+                <li>Сир</li>
+            </ul>
+        </li>
+        <li>Технології
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Node</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        const categoriesList = document.getElementById('categories');
+        const categories = categoriesList.querySelectorAll('li');
+
+        console.log(`У списку ${categories.length} категорії.`);
+
+        categories.forEach(category => {
+            const categoryName = category.querySelector('h2').textContent;
+            const categoryItems = category.querySelectorAll('ul li').length;
+
+            console.log(`Категорія: ${categoryName}`);
+            console.log(`Кількість елементів: ${categoryItems}`);
+        });
+    </script>
+</body>
+</html>
