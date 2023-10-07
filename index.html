@@ -1,49 +1,137 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Завдання 1</title>
-</head>
-<body>
+  <head>
+    <title>Завдання</title>
+    <style>
+      /* Стилі для завдання 1 */
+      .item {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Завдання 1 -->
     <ul id="categories">
-        <li>Тварини
-            <ul>
-                <li>Кіт</li>
-                <li>Хом'як</li>
-                <li>Кінь</li>
-                <li>Папуга</li>
-            </ul>
-        </li>
-        <li>Продукти
-            <ul>
-                <li>Хліб</li>
-                <li>Петрушка</li>
-                <li>Сир</li>
-            </ul>
-        </li>
-        <li>Технології
-            <ul>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Node</li>
-            </ul>
-        </li>
+      <li class="item">
+        <h2>Тварини</h2>
+        <ul>
+          <li>Кіт</li>
+          <li>Хом'як</li>
+          <li>Кінь</li>
+          <li>Папуга</li>
+        </ul>
+      </li>
+      <li class="item">
+        <h2>Продукти</h2>
+        <ul>
+          <li>Хліб</li>
+          <li>Петрушка</li>
+          <li>Сир</li>
+        </ul>
+      </li>
+      <li class="item">
+        <h2>Технології</h2>
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Node</li>
+        </ul>
+      </li>
     </ul>
 
+    <!-- Завдання 2 -->
+    <ul id="ingredients"></ul>
+
+    <!-- Завдання 3 -->
+    <ul id="gallery"></ul>
+
+    <!-- Завдання 4 -->
+    <div id="counter">
+      <button type="button" data-action="decrement">-1</button>
+      <span id="value">0</span>
+      <button type="button" data-action="increment">+1</button>
+    </div>
+
     <script>
-        const categoriesList = document.getElementById('categories');
-        const categories = categoriesList.querySelectorAll('li');
+      // Завдання 1
+      const categories = document.querySelectorAll(".item");
 
-        console.log(`У списку ${categories.length} категорії.`);
+      console.log(`У списку ${categories.length} категорії.`);
 
-        categories.forEach(category => {
-            const categoryName = category.querySelector('h2').textContent;
-            const categoryItems = category.querySelectorAll('ul li').length;
+      categories.forEach((category) => {
+        const categoryName = category.querySelector("h2").textContent;
+        const categoryItems = category.querySelectorAll("ul li").length;
 
-            console.log(`Категорія: ${categoryName}`);
-            console.log(`Кількість елементів: ${categoryItems}`);
-        });
+        console.log(`Категорія: ${categoryName}`);
+        console.log(`Кількість елементів: ${categoryItems}`);
+      });
+
+      // Завдання 2
+      const ingredients = [
+        "Картопля",
+        "Гриби",
+        "Часник",
+        "Помідори",
+        "Зелень",
+        "Приправи",
+      ];
+
+      const ulIngredients = document.getElementById("ingredients");
+
+      ingredients.forEach((ingredient) => {
+        const li = document.createElement("li");
+        li.textContent = ingredient;
+        ulIngredients.appendChild(li);
+      });
+
+      // Завдання 3
+      const images = [
+        {
+          url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          alt: "White and Black Long Fur Cat",
+        },
+        {
+          url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+        },
+        {
+          url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+          alt: "Group of Horses Running",
+        },
+      ];
+
+      const ulGallery = document.getElementById("gallery");
+
+      const liElements = images.map((image) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<img src="${image.url}" alt="${image.alt}">`;
+        return li;
+      });
+
+      ulGallery.append(...liElements);
+
+      // Завдання 4
+      const counterValue = document.getElementById("value");
+      let value = 0;
+
+      const incrementButton = document.querySelector(
+        '[data-action="increment"]'
+      );
+      const decrementButton = document.querySelector(
+        '[data-action="decrement"]'
+      );
+
+      incrementButton.addEventListener("click", () => {
+        value++;
+        counterValue.textContent = value;
+      });
+
+      decrementButton.addEventListener("click", () => {
+        value--;
+        counterValue.textContent = value;
+      });
     </script>
-</body>
+  </body>
 </html>
